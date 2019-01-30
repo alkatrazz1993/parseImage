@@ -1,8 +1,9 @@
 ﻿<?php
 
 
-function __autoload($classname) {
-    $filename = $classname .".php";
+function __autoload($classname)
+{
+    $filename = $classname . ".php";
     include_once($filename);
 }
 
@@ -12,7 +13,7 @@ function validateImagesLink()
     $images = new Images();
     $allImages = $images->getImages();
 
-    if($allImages != $images->emptyPattern && $allImages != $images->messageToErrorCode){
+    if ($allImages != $images->emptyPattern && $allImages != $images->messageToErrorCode) {
 
         foreach ($allImages as $key => $link) {
 
@@ -62,25 +63,21 @@ $allImages = validateImagesLink();
                 </thead>
                 <tbody>
                 <? foreach ($allImages as $key => $link) {
-                    if (!empty($link)) { ?>
-                        <tr>
-                            <td><? echo $key ?></td>
-                            <td><a href="<? echo $link ?>" target="_blank"><? echo $link ?></a></td>
-                        </tr>
-                    <? } else { ?> <p>Результатов не найдено.</p><?
-                    }
-                } ?>
+                    ?>
+                    <tr>
+                        <td><? echo $key ?></td>
+                        <td><a href="<? echo $link ?>" target="_blank"><? echo $link ?></a></td>
+                    </tr>
+                <? } ?>
                 </tbody>
             </table>
         </div>
 
-    <? } else {  ?>
+    <? } else { ?>
         <p>Изображений нет</p>
     <? } ?>
 
 </div>
-
-
 </body>
 </html>
 
